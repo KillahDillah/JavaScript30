@@ -58,18 +58,20 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  
 window.addEventListener('keydown', (e) => {
   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); // select all elements that have an audio element matching the keyCode on 'keydown'
   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
 
-  if(!audio) return; // stops function from running altogether
+  if (!audio) return; // stops function from running altogether
   audio.currentTime = 0;  //sets play time to 0
   audio.play();  // audio element will play again only when it has finished.
   key.classList.add('playing');  // adds .playing to key
 })
 
-const removeTransition = e => {
-  console.log(e);
+function removeTransition(key) {
+  if (key.propertyName !== 'transform') return;  //skip function if propertyName not 'transform'
+  this.classList.remove('playing');
 }
 
 const keys = document.querySelectorAll('.key');  //returns array of elements with .key
