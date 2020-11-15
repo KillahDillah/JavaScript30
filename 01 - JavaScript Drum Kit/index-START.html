@@ -58,8 +58,8 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-  
-window.addEventListener('keydown', (e) => {
+
+function playSound (e) {
   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); // select all elements that have an audio element matching the keyCode on 'keydown'
   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
 
@@ -67,7 +67,7 @@ window.addEventListener('keydown', (e) => {
   audio.currentTime = 0;  //sets play time to 0
   audio.play();  // audio element will play again only when it has finished.
   key.classList.add('playing');  // adds .playing to key
-})
+}
 
 function removeTransition(key) {
   if (key.propertyName !== 'transform') return;  //skip function if propertyName not 'transform'
@@ -76,7 +76,7 @@ function removeTransition(key) {
 
 const keys = document.querySelectorAll('.key');  //returns array of elements with .key
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));  //loops through keys array and adds 'transitionend' to each and when the class is added, remove transition  ** add eventListener always takes two params
-
+window.addEventListener('keydown', playSound)
 </script>
 
 
