@@ -7,3 +7,9 @@
 4. if no audio, then stop the function from running
 
 5. rewind audio to the start with .currentTime=0
+
+6. find matching element to keyCode
+
+7. add .playing class to keydown event
+
+8. remove .playing class

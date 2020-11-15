@@ -59,13 +59,22 @@
 
 <script>
 window.addEventListener('keydown', (e) => {
-  console.log(e.keyCode) // log event keyCode
   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); // select all elements that have an audio element matching the keyCode on 'keydown'
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
   if(!audio) return; // stops function from running altogether
-  console.log(audio); 
   audio.currentTime = 0;  //sets play time to 0
   audio.play();  // audio element will play again only when it has finished.
+  key.classList.add('playing');  // adds .playing to key
 })
+
+const removeTransition = e => {
+  console.log(e);
+}
+
+const keys = document.querySelectorAll('.key');  //returns array of elements with .key
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));  //loops through keys array and adds 'transitionend' to each and when the class is added, remove transition  ** add eventListener always takes two params
+
 </script>
 
 
