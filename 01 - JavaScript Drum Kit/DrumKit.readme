@@ -1,0 +1,9 @@
+1. listen and log 'keydown' events
+
+2. select the audio elements that match the 'keydown' keyCode
+
+3. play audio element
+
+4. if no audio, then stop the function from running
+
+5. rewind audio to the start with .currentTime=0

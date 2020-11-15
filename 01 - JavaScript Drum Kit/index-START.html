@@ -59,7 +59,12 @@
 
 <script>
 window.addEventListener('keydown', (e) => {
-  console.log(e.keyCode)
+  console.log(e.keyCode) // log event keyCode
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); // select all elements that have an audio element matching the keyCode on 'keydown'
+  if(!audio) return; // stops function from running altogether
+  console.log(audio); 
+  audio.currentTime = 0;  //sets play time to 0
+  audio.play();  // audio element will play again only when it has finished.
 })
 </script>
 
